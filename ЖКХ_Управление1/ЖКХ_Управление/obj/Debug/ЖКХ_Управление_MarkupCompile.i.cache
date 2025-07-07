@@ -1,0 +1,20 @@
+﻿ЖКХ_Управление
+
+
+winexe
+C#
+.cs
+C:\Users\v1sit\Documents\третий курс\2 семестр\КР\ЖКХ_Управление\ЖКХ_Управление\obj\Debug\
+ЖКХ_Управление
+none
+false
+DEBUG;TRACE
+C:\Users\v1sit\Documents\третий курс\2 семестр\КР\ЖКХ_Управление\ЖКХ_Управление\App.xaml
+20-1495016749
+
+311423931540
+1342106268145
+AdminWindow.xaml;ConfirmDeleteWindow.xaml;Controls\CategoriesControl.xaml;Controls\ClientsControl.xaml;Controls\EmployeesControl.xaml;Controls\MastersControl.xaml;Controls\NlpTemplatesControl.xaml;Controls\PositionsControl.xaml;EmployeeControls\RequestsCompletedControl.xaml;EmployeeControls\RequestsInProgressControl.xaml;EmployeeControls\RequestsPendingControl.xaml;EmployeeWindow.xaml;LoginWindow.xaml;MasterControls\ActiveAssignmentsControl.xaml;MasterControls\CompletedAssignmentsControl.xaml;MasterSelectionWindow.xaml;MasterWindow.xaml;Views\ErrorDialogWindow.xaml;Views\SuccessDialogWindow.xaml;Views\WarningDialogWindow.xaml;
+
+True
+
