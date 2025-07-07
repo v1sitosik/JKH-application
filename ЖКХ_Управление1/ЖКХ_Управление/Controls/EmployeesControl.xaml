@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="ЖКХ_Управление.Controls.EmployeesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ЖКХ_Управление.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:packIcon="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Background="White" Cursor="">
+
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="10">
+            <TextBlock Text="Управление сотрудниками"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"
+                       Foreground="Black"/>
+            <!-- Поиск и переключатель паролей -->
+            <!-- Поиск и переключатель паролей -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- CheckBox слева -->
+                <CheckBox x:Name="ShowPasswordsCheckBox"
+              Content="Показать пароли (хеш)"
+              VerticalAlignment="Center"
+              Margin="0,0,20,0"
+              Foreground="Black"
+              Checked="ShowPasswordsCheckBox_Changed"
+              Unchecked="ShowPasswordsCheckBox_Changed"/>
+
+                <!-- Поиск справа -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <ComboBox x:Name="SearchFieldComboBox"
+                  Width="130"
+                  Height="48"
+                  Margin="0,0,5,0"
+                  Background="#F5F5F5"
+                  Foreground="Black"
+                  BorderBrush="#CCCCCC"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                  materialDesign:HintAssist.Hint="Поле"
+                  SelectedIndex="0"
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="{Binding SelectedItem, RelativeSource={RelativeSource Self}}">
+                        <sys:String>ID</sys:String>
+                        <sys:String>Имя</sys:String>
+                        <sys:String>Фамилия</sys:String>
+                        <sys:String>Логин</sys:String>
+                        <sys:String>Должность</sys:String>
+                    </ComboBox>
+
+                    <TextBox x:Name="SearchTextBox"
+                  Width="160" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Поиск..." Style="{StaticResource MaterialDesignOutlinedTextBox}" TextChanged="SearchTextBox_TextChanged"/>
+                </StackPanel>
+            </Grid>
+
+            <DataGrid x:Name="EmployeesDataGrid"
+                      AutoGenerateColumns="False"
+                      SelectionMode="Single"
+                      IsReadOnly="True"
+                      Height="250"
+                      Margin="0,0,0,10"
+                      SelectionChanged="EmployeesDataGrid_SelectionChanged"
+                      Background="White"
+                      Foreground="Black"
+                      BorderBrush="#CCCCCC">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding сотрудник_id}" Width="50"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding имя}" Width="100"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding фамилия}" Width="100"/>
+                    <DataGridTextColumn Header="Логин" Binding="{Binding логин}" Width="100"/>
+                    <DataGridTextColumn Header="Пароль" Binding="{Binding пароль}" Width="150"/>
+                    <DataGridTextColumn Header="Должность" Binding="{Binding должность}" Width="150"/>
+                    <DataGridTextColumn Header="Дата приёма" Binding="{Binding дата_приема, StringFormat=dd.MM.yyyy}" Width="120"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Поля ввода -->
+            <WrapPanel Margin="0,10,0,10" VerticalAlignment="Center">
+                <TextBox x:Name="NameTextBox" Width="160" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox x:Name="SurnameTextBox" Width="150" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox x:Name="LoginTextBox" Width="150" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <PasswordBox x:Name="PasswordBox" Width="150" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                <ComboBox x:Name="PositionComboBox" Width="185" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" DisplayMemberPath="Название" materialDesign:HintAssist.Hint="Выберите должность" Style="{StaticResource MaterialDesignOutlinedComboBox}"/>
+                <DatePicker x:Name="HireDatePicker" Width="160" Height="48" Background="#F5F5F5" Foreground="Black" BorderBrush="#CCCCCC" Margin="5" materialDesign:HintAssist.Hint="Дата приёма" Style="{StaticResource MaterialDesignDatePicker}">
+                    <DatePicker.Resources>
+                        <Style TargetType="Button" x:Key="CalendarButtonOverride">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <packIcon:PackIcon Kind="Calendar" Width="20" Height="20" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+            </WrapPanel>
+
+            <!-- Кнопки -->
+            <WrapPanel>
+                <Button Content="Добавить" Click="AddEmployeeButton_Click" Width="100" Margin="5" Background="#0078D7" Foreground="White" Height="33"/>
+                <Button Content="Редактировать" Click="EditEmployeeButton_Click" Width="130" Margin="5" Background="#0078D7" Foreground="White" Height="33"/>
+                <Button Content="Удалить" Click="DeleteEmployeeButton_Click" Width="100" Margin="5" Background="#E53935" BorderBrush="#ff4e33" Foreground="White" Height="33"/>
+                <Button Content="Экспорт в Excel" Click="ExportEmployeesToExcel_Click" Width="150" Margin="5" Background="#0078D7" Foreground="White" Height="33"/>
+                <Button Content="🔄" Width="50" Margin="5" Click="LoadEmployeesButton_Click" Background="#0078D7" Foreground="White" Height="33"/>
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
