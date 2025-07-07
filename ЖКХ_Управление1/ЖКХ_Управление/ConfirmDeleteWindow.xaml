@@ -1,0 +1,38 @@
+﻿<Window x:Class="ЖКХ_Управление.ConfirmDeleteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Подтверждение удаления"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="White"
+        WindowStyle="ToolWindow">
+
+    <StackPanel Margin="20" Width="350">
+        <TextBlock x:Name="ConfirmMessage"
+                   Text="Вы уверены, что хотите удалить элемент?"
+                   FontSize="16"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   Margin="0,0,0,20"
+                   Foreground="Black"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Да"
+                    Width="100"
+                    Margin="10,0"
+                    Background="#E53935"
+                    BorderBrush="#ff4e33"
+                    Foreground="White"
+                    Click="YesButton_Click"/>
+
+            <Button Content="Нет"
+                    Width="100"
+                    Margin="10,0"
+                    Background="#0078D7"
+                    Foreground="White"
+                    Click="NoButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

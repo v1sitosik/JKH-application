@@ -1,0 +1,77 @@
+﻿<Window x:Class="ЖКХ_Управление.MasterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:ЖКХ_Управление.MasterControls"
+        Title="Окно мастера"
+        Width="1000" Height="600"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Window.Resources>
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Center"
+                                              Margin="10,5"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#42A5F5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель -->
+        <DockPanel Background="#1976D2">
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="Мастер"
+                           FontSize="20"
+                           Foreground="White"
+                           Margin="20,20,0,20"/>
+                <Button x:Name="AssignmentsTab"
+                        Content="📋 Мои заявки"
+                        Click="AssignmentsTab_Click"
+                        Style="{StaticResource NavButtonStyle}"
+                        Width="180" Height="50"/>
+                <Button x:Name="CompletedTab"
+                        Content="✅ Завершённые"
+                        Click="CompletedTab_Click"
+                        Style="{StaticResource NavButtonStyle}"
+                        Width="180" Height="50"/>
+            </StackPanel>
+
+            <Button Content="⏎ Выйти"
+                    DockPanel.Dock="Bottom"
+                    Click="ExitButton_Click"
+                    Padding="10"
+                    Style="{StaticResource NavButtonStyle}"
+                    Width="180"
+                    Height="50"
+                    VerticalAlignment="Bottom"/>
+        </DockPanel>
+
+        <!-- Контент -->
+        <Grid Grid.Column="1" Margin="10">
+            <ContentControl x:Name="MainContent"/>
+        </Grid>
+    </Grid>
+</Window>
